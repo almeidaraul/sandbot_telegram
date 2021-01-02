@@ -23,7 +23,7 @@ def sleep(update, context):
         msg = "Falling asleep at {}? If I were you, I'd choose one of these to wake up at:\n".format(sleep_at.strftime(STRF))
         for i in range(6):
             d = tdelta(minutes=90*(i+1))
-            tm = (sleep_at + d).astimezone(timezone('America/Sao_Paulo'))
+            tm = (sleep_at + d) #.astimezone(timezone('America/Sao_Paulo'))
             msg += "* {}\n".format(tm.strftime(STRF))
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
@@ -35,7 +35,7 @@ def wake(update, context):
         msg = "Wanna wake up at {}? Well, go to bed around one of these times:\n".format(wake_at.strftime(STRF))
         for i in reversed(range(6)):
             d = tdelta(minutes=-(15+90*(i+1)))
-            tm = (wake_at + d).astimezone(timezone('America/Sao_Paulo'))
+            tm = (wake_at + d) #.astimezone(timezone('America/Sao_Paulo'))
             msg += "* {}\n".format(tm.strftime(STRF))
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 

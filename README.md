@@ -2,14 +2,32 @@
 Find out at what time to sleep or go to bed
 
 ## Deploying to heroku
+### Adding a requirements.txt and Procfile
 You'll need to add a few files to `src/`.
 
-First, create a **Procfile** that looks like this (change the value of TOKEN to your bot's token and HEROKU to your heroku app's URL with a trailing `/`):
+**Procfile**
 ```
-web: echo -e "TOKEN\nHEROKU" | python3 bot.py
+web: python3 bot.py
 ```
 
-Then, a **requirements.txt** file:
+**requirements.txt**
 ```
 python-telegram-bot==13.1
+```
+
+### Creating an app and getting it's URL
+* Install the Heroku CLI
+* Run `heroku login` and `heroku create`. The latter will print your app's URL.
+
+### Telling your bot about it
+Change the variables TOKEN and HEROKU in `src/bot.py` to your bot's token and your heroku app's url, respectively.
+
+### Deploy with `heroku-builds`
+Using [heroku-builds](https://github.com/heroku/heroku-builds), we can deploy this without exposing the bot's token in Github.
+
+Run
+```
+heroku plugins:install heroku-builds
+cd src
+heroku builds:create -a app-name
 ```

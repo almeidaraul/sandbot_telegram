@@ -58,8 +58,8 @@ def start(update, context):
 
 
 if __name__ == "__main__":
-    TOKEN = input()
-    HEROKU = input()
+    TOKEN = "your-token-here"
+    HEROKU = "https://app-name.herokuapp.com/"
 
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
